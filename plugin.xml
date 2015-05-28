@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.sinofool.cordova.plugins.wechat" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>cordova-wechat-plugin</name>
+    <js-module name="cordova-wechat-plugin" src="www/cordova-wechat-plugin.js">
+        <clobbers target="WeChatPlugin" />
+    </js-module>
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="WeChatPlugin">
+                <param name="ios-package" value="WeChatPlugin"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+        <source-file src="src/ios/WeChatPlugin.m" />
+        <header-file src="src/ios/WeChatPlugin.h" />
+        <source-file src="src/ios/AppDelegate+wechat.m" />
+        <header-file src="src/ios/AppDelegate+wechat.h" />
+        <header-file src="libs/WXApi.h" />
+        <header-file src="libs/WXApiObject.h" />
+        <source-file src="libs/libWeChatSDK.a" framework="true" />
+        <framework src="SystemConfiguration.framework" />
+        <framework src="libz.dylib" />
+        <framework src="libsqlite3.dylib" />
+        <framework src="libc++.dylib" />
+    </platform>
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <feature name="WeChatPlugin">
+                <param name="android-package" value="com.sinofool.cordova.plugins.alipay.WeChatPlugin"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+        <source-file src="src/android/WeChatPlugin.java" target-dir="src/com/sinofool/cordova/plugins/wechat/" />
+        <source-file src="libs/libammsdk.jar" target-dir="libs/" />
+    </platform>
+</plugin>
